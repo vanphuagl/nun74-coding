@@ -1,0 +1,131 @@
+/* Components
+------------------------------------------------------------*/
+
+.l-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 100px 40px;
+
+  @include maxW(375px) {
+    padding: 100px 5vw;
+  }
+}
+
+.l-wrapper {
+  flex: 1;
+  margin: 80px 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.c-title {
+  font-size: 3.8rem;
+  font-weight: 300;
+  line-height: 1.15;
+
+  @include mobile {
+    font-size: 2.4rem;
+  }
+}
+
+[data-fadein] {
+  opacity: 0;
+  filter: blur(50px);
+  transition: opacity 1s ease-in-out, filter 1s ease-in-out;
+
+  &.--show {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+[data-vertical-line] {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  width: 2px;
+  height: 200px;
+  border-right: 1px solid var(--black-cl);
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: top;
+  transition: transform 0.8s ease-in-out;
+
+  &.--half {
+    top: 0;
+    height: 100px;
+  }
+
+  &.--show {
+    transform: translateX(-50%) scaleY(1);
+  }
+
+  @media (min-width: 600px) and (max-width: 1023px) {
+    top: -150px;
+    height: 300px;
+
+    &.--half {
+      height: 150px;
+    }
+  }
+}
+
+[data-vertical-line="white"] {
+  border-color: var(--white-cl);
+}
+
+[data-anim] {
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: rgba(112, 112, 112, 0.35);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.8s ease-in-out;
+    transition-delay: 0.5s;
+  }
+
+  &.--show {
+    &:after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+.link-hover {
+  width: fit-content;
+  transition: all 0.4s ease-in-out;
+  position: relative;
+  text-decoration: none;
+  line-height: 1.6;
+
+  &:hover {
+    &:before {
+      transform: scaleX(0);
+      transform-origin: bottom right;
+    }
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: var(--black-cl);
+    bottom: 4px;
+    left: 0;
+    transform: scaleX(1);
+    transform-origin: bottom left;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}

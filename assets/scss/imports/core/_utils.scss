@@ -1,0 +1,35 @@
+/* Utils
+------------------------------------------------------------*/
+
+.--noto-fonts {
+  font-family: var(--noto-fonts);
+}
+
+.--lovato-fonts {
+  font-family: var(--main-fonts);
+  font-weight: 300;
+}
+
+.u-txt-align {
+  text-align: center;
+}
+
+/* only device */
+.sp-only,
+.is-hidden {
+  display: none !important;
+}
+
+@include mobile {
+  .u-txt-align {
+    text-align: left;
+  }
+
+  .pc-only {
+    display: none !important;
+  }
+
+  .sp-only {
+    display: block !important;
+  }
+}
